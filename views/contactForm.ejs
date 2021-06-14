@@ -1,0 +1,75 @@
+<%- include('./partials/head.ejs') %>
+<div class="container-fluid mt-3">
+	<h1 class="title text-center">Have Questions?</h1>
+	<h4 class="title text-center">We're here to help.</h4>
+
+	<form class="row g-3" style="max-width: 50rem; margin: auto" method="POST" action="/contact">
+		<!-- Customer details -->
+
+		<div class="col-12 mb-2">
+			<label for="name" class="form-label">Name</label>
+			<input
+				type="text"
+				class="form-control"
+				name="name"
+				placeholder="Enter Your Name"
+                maxlength="50"
+
+			/>
+		</div>
+
+		<div class="col-md-6 mb-2">
+			<label for="email" class="form-label">Email</label>
+			<input
+				type="email"
+				class="form-control"
+				name="email"
+				placeholder="Enter Your Email"
+                maxlength="50"
+
+			/>
+		</div>
+
+		<div class="col-6 mb-2">
+			<label for="mobile" class="form-label">Handphone(Hp)</label>
+			<input
+				type="text"
+				class="form-control"
+				name="mobile"
+				placeholder="Enter Mobile Number"
+                maxlength="11"
+			/>
+		</div>
+
+
+        <div class="col-12 mb-3">
+            <label for="comments" class="form-label">Max Characters: 300</label>
+            <textarea class="form-control" name="comments" rows="4" maxlength="300" type="text" placeholder="Don't be shy, we don't bite. Ask away..."></textarea>
+        </div>
+
+		<div class="col-12 mb-5">
+			<!-- Submit Button trigger modal -->
+			<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Submit</button>
+		</div>
+		<!-- Modal -->
+		<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+				<h5 class="modal-title text-warning fs-2" id="staticBackdropLabel">Submitted Successfully!</h5>
+				<!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+				</div>
+				<div class="modal-body">
+				<p>Thank you for your interest in our services! Our staff will reach out to you and will be hearing from us soon.</p>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-primary">Okay</button>
+				</div>
+			</div>
+			</div>
+		</div>
+	</form>
+</div>
+
+
+<%- include('./partials/foot.ejs') %>

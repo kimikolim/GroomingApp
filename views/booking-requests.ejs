@@ -1,0 +1,267 @@
+<%- include('./partials/head.ejs') %>
+
+<div class="container-fluid mt-3">
+
+    <h1 class="title text-center display-2 mb-5"><i class="fas fa-cut"></i> Booking Requests <i class="fas fa-cut fa-rotate-180"></i></h1>
+
+    <div class="accordion p-3" id="accordionBooking">
+        <% bookingRequests.forEach((element, index) => { %>
+          <div class="accordion-item">
+          <div class="accordion-header" id="headingOne">
+
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<%= index %>">#<%= index + 1 %> &nbsp Booking request made - <%= moment(element.created_at).fromNow() %> &nbsp Updated: <%= moment(element.updated_at).fromNow() %></button>
+
+
+          </div>
+          <div id="collapse<%= index %>" class="accordion-collapse collapse" aria-labelledby="headingOne">
+            <div class="accordion-body">
+              <div class="container">
+                <div class="row">
+
+                  <!-- Owner Particulars -->
+                  <div class="col">
+                    <div class="card">
+
+                      <div class="card-header">
+                        <div class="row d-flex">
+                          <div class="col-11 align-self-center">
+                            <h5 class="header pt-2">Owner Particulars</h5>
+                          </div>
+                          <div class="col-1">
+                            <a href="#" class="btn" data-bs-toggle="modal" data-bs-target="#updateOwnerModal<%= element._id %>"><i class="fas fa-edit"></i></a>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="card-body">
+                        <h5 class="card-title">Name</h5>
+                        <p class="card-text border-bottom p-2"><%= element.name %></p>
+                        <h5 class="card-title">Email</h5>
+                        <p class="card-text border-bottom p-2"><%= element.email %></p>
+                        <h5 class="card-title">Mobile</h5>
+                        <p class="card-text border-bottom p-2"><%= element.mobile %></p>
+                        <h5 class="card-title">Address</h5>
+                        <p class="card-text border-bottom p-2"><%= element.address %> <br> Postal(<%= element.zip %>)</p>
+                        <h5 class="card-title">Additional Comments</h5>
+                        <p class="card-text border p-1"><%= element.comments %></p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Appointment Details -->
+                  <div class="col">
+                    <div class="card">
+                      <div class="card-header">
+                        <div class="row d-flex">
+                          <div class="col-11 align-self-center">
+                            <h5 class="header pt-2">Appointment Details</h5>
+                          </div>
+                          <div class="col-1">
+                            <a href="#" class="btn" data-bs-toggle="modal" data-bs-target="#updateAppointmentModal<%= element._id %>"><i class="fas fa-edit"></i></a>
+                          </div>
+                        </div>
+                      </div>
+
+
+                      <div class="card-body">
+                        <h5 class="card-title">Pet Particulars</h5>
+                        <p class="card-text border-bottom p-2"><strong>Name: </strong><%= element.petName %> <br> <strong>Breed: </strong><%= element.petBreed %></p>
+                        <h5 class="card-title">Preferred Date & Timeslot</h5>
+                        <p class="card-text border-bottom p-2"><strong>Date: </strong><%= moment(element.date).format('dddd, Do MMMM YYYY') %> <br> <strong>Time: </strong><%= element.timeslot %> <br> <strong>Transport: </strong> <%= element.transport %></p>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- OWNER EDIT MODALS -->
+        <div class="modal fade" id="updateOwnerModal<%= element._id %>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title text-warning fs-2" id="staticBackdropLabel">Edit Owner Particulars</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+                <form action="/admin/dashboard/booking-requests/<%= element._id %>/owner?_method=PATCH" method="POST">
+                    <div class="modal-body">
+                      <div class="col-md-12 mb-2">
+                        <label for="name" class="form-label">Name</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          name="name"
+                          placeholder="Edit Name"
+                          maxlength="50"
+                          value="<%= element.name %>"
+
+
+                        />
+                      </div>
+
+                      <div class="col mb-2">
+                        <label for="email" class="form-label">Email</label>
+                        <input
+                          type="email"
+                          class="form-control"
+                          name="email"
+                          placeholder="Edit Email"
+                          maxlength="50"
+                          value="<%= element.email %>"
+
+                        />
+                      </div>
+
+                      <div class="col-md-6 mb-2">
+                        <label for="mobile" class="form-label">Handphone(Hp)</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          name="mobile"
+                          placeholder="Edit Mobile Number"
+                                  maxlength="11"
+                                  value="<%= element.mobile %>"
+
+                        />
+                      </div>
+
+                      <div class="col mb-2">
+                        <label for="address" class="form-label">Address</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          name="address"
+                          placeholder="Apartment address & unit"
+                          maxlength="100"
+                          value="<%= element.address %>"
+                          />
+                      </div>
+
+                      <div class="col-4 mb-2">
+                        <label for="zip" class="form-label">Zip</label>
+                        <input type="text" class="form-control" name="zip" placeholder="Postal" maxlength="6" value="<%= element.zip %>"/>
+
+                      </div>
+
+                      <div class="col-md-12 mb-3">
+                          <label for="comments" class="form-label">Max Characters: 300</label>
+                          <textarea class="form-control" name="comments" rows="4" maxlength="300" type="text" placeholder="Edit Comment"><%= element.comments %></textarea>
+                      </div>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-info">Update</button>
+                    </div>
+                </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- APPOINTMENT EDIT MODALS -->
+        <div class="modal fade" id="updateAppointmentModal<%= element._id %>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title text-warning fs-2" id="staticBackdropLabel">Edit Appointment Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+                <form action="/admin/dashboard/booking-requests/<%= element._id %>/pet?_method=PATCH" method="POST">
+                    <div class="modal-body">
+                      <div class="col-md-6 mb-2">
+                        <label for="petName" class="form-label">Pet Name</label>
+                        <input type="text" class="form-control" placeholder="Enter Pet's Name" maxlength="20" name="petName" value="<%= element.petName %> "/>
+                      </div>
+
+                      <div class="col-6 mb-2">
+                        <label for="petBreed" class="form-label">Pet Breed</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Example: Dog Husky or Cat Mainecoon"
+                          maxlength="30"
+                          name="petBreed"
+                          value="<%= element.petBreed %> "
+                        />
+                      </div>
+
+                      <div class="col-12 mb-2">
+                        <label for="date" class="form-label">Preferred Date</label>
+                        <input placeholder="Date" class="form-control" name="date" type="date" " id="date" value="<%= moment(element.date).format("YYYY-MM-DD") %>">
+                      </div>
+
+                      <div class="col-6 mb-2">
+                        <label for="time" class="form-label">Preferred Time</label>
+                        <select name="timeslot" class="form-select">
+                          <option selected value="<%= element.timeslot %>">Time selected: <%= element.timeslot %></option>
+                          <option value="11am">11am</option>
+                          <option value="1pm">1pm</option>
+                          <option value="3pm">3pm</option>
+                          <option value="5pm">5pm</option>
+                        </select>
+                      </div>
+
+                      <div class="col-12 mb-2">
+
+                              <fieldset class="row mb-3">
+                                  <legend class="col-form-label col-sm-2 pt-0">Transport</legend>
+                                  <div class="col-sm-10">
+                                    <div class="form-check">
+                                      <input class="form-check-input" type="radio" name="transport" value="yes" <%= element.transport == "yes" ? "checked" : "" %>>
+                                      <label class="form-check-label" for="gridRadios1">Yes, come fetch me!</label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input class="form-check-input" type="radio" name="transport" value="no" <%= element.transport == "no" ? "checked" : "" %>>
+                                      <label class="form-check-label" for="gridRadios2">No thanks, I have my own transport.</label>
+                                    </div>
+                                  </div>
+                              </fieldset>
+                      </div>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-info">Update</button>
+                    </div>
+                </form>
+            </div>
+          </div>
+        </div>
+        <!-- Delete Booking Modal -->
+        <div class="modal fade" id="deleteBookingModal<%= element._id %>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title text-warning fs-2" id="staticBackdropLabel">Warning!</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <p>Are you sure you want to <strong>DELETE</strong> booking permanently?</p>
+              </div>
+              <div class="modal-footer">
+                  <form action="/admin/dashboard/booking-requests/<%= element._id %>?_method=DELETE" method="POST">
+                      <button type="submit" class="btn btn-danger">Delete</button>
+                  </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <% }) %>
+
+
+
+
+    </div> <!-- accordian div -->
+
+
+
+</div>
+
+<%- include('./partials/foot.ejs') %>
+
+

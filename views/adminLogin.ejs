@@ -1,0 +1,44 @@
+<%- include('./partials/head.ejs') %>
+
+
+<div class="container-fluid mt-3">
+    <!-- Login Header -->
+
+    <h1 class="title text-center display-1 mb-5"><i class="fas fa-cut"></i> Staff Login Page <i class="fas fa-cut fa-rotate-180"></i></h1>
+
+
+	<form class="row g-3" style="max-width: 30rem; margin: auto">
+
+        <!-- Customer details -->
+
+		<div class="col-12 mb-3">
+			<label for="username" class="form-label">Username</label>
+			<input
+				type="text"
+				class="form-control"
+				id="username"
+				placeholder="Admin"
+                maxlength="20"
+
+			/>
+		</div>
+
+        <div class="col-12 mb-3">
+			<label for="password" class="form-label">Password</label>
+			<input
+				type="password"
+				class="form-control"
+				id="password"
+                maxlength="40"
+			/>
+		</div>
+
+		<div class="col-12 mb-5">
+			<!-- <button type="submit" href="/admin/dashboard" class="btn btn-primary">Submit</button> -->
+			<a href="/admin/dashboard" class="btn btn-primary" type="submit">Submit</a>
+		</div>
+
+	</form>
+</div>
+
+<%- include('./partials/foot.ejs') %>

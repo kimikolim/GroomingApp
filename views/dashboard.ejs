@@ -1,0 +1,23 @@
+<%- include('./partials/head.ejs') %>
+
+<div class="container-fluid mt-3">
+    <!-- Login Header -->
+
+    <h1 class="title text-center"><i class="fas fa-cut"></i> Staff Dashboard <i class="fas fa-cut fa-rotate-180"></i></h1>
+
+
+
+    <div class="row justify-content-around" style="margin-top: 10rem;">
+        <div class="col-4">
+            <a href="/admin/dashboard/contact-queries" style="text-decoration: none; text-align: center; color: #10559a;"><i class="fas fa-question-circle fa-6x"> Queries</i></a>
+        </div>
+
+        <div class="col-4">
+            <a href="/admin/dashboard/booking-requests" style="text-decoration: none; text-align: center; color: #10559a;"><i class="fas fa-calendar-plus fa-6x"> Bookings</i></a>
+        </div>
+    </div>
+
+</div>
+
+
+<%- include('./partials/foot.ejs') %>

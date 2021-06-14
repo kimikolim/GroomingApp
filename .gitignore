@@ -1,0 +1,5 @@
+.env
+node_modules
+scratchpad.ejs
+scratchpad.js
+.DS_store
