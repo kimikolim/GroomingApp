@@ -77,7 +77,7 @@ module.exports = {
 			})
 			.catch((err) => {
 				console.log(err);
-				res.send("submit query failed");
+				res.status(400).send("submit query failed");
 			});
 	},
 
@@ -106,7 +106,7 @@ module.exports = {
 			})
 			.catch((err) => {
 				console.log(err);
-				res.send("submit query failed");
+				res.status(400).send("submit query failed");
 			});
 	},
 
@@ -139,7 +139,7 @@ module.exports = {
 			})
 			.catch((err) => {
 				console.log(err);
-				res.send("edit query error");
+				res.status(400).send("edit query error");
 			});
 	},
 
@@ -174,7 +174,7 @@ module.exports = {
 			})
 			.catch((err) => {
 				console.log(err);
-				res.send("edit owner error");
+				res.status(400).send("edit owner error");
 			});
 	},
 
@@ -197,7 +197,7 @@ module.exports = {
 			})
 			.catch((err) => {
 				console.log(err);
-				res.send("edit pet error");
+				res.status(400).send("edit pet error");
 			});
 	},
 };
