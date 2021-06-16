@@ -14,7 +14,12 @@ const bookingRequestSchema = new mongoose.Schema({
     comments: {type: String},
     created_at: {type: Date},
     updated_at: {type: Date}
-})
+},
+{
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true }
+  })
+  bookingRequestSchema.virtual('formatted_date')
 
 const BookingModel = mongoose.model('bookingRequests', bookingRequestSchema)
 

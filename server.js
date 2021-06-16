@@ -4,7 +4,7 @@
 require('dotenv').config()
 const express = require('express');
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 const method_override = require('method-override')
 const groomController = require('./controllers/controller')
 const mongoose = require('mongoose');
@@ -19,7 +19,8 @@ app.set('view engine', 'ejs')
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(method_override('_method'))
-app.use(express.static('public'))
+// app.use(express.static('public'))
+app.use(express.static(__dirname + "/public"));
 app.locals.moment = require('moment')
 
 // =======================================

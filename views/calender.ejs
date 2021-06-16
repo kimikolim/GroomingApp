@@ -1,7 +1,7 @@
 <%- include('./partials/head.ejs') %>
 
 
-<div class="container">
+<div class="container mainblock">
 	<div id="calendar"></div>
 </div>
 
@@ -17,22 +17,14 @@ document.addEventListener('DOMContentLoaded', function() {
     headerToolbar: {
       left: 'prev,next today',
       center: 'title',
-      right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+      right: 'dayGridMonth,timeGridWeek,listMonth' //timeGridDay,
     },
     dayMaxEvents: true, // allow "more" link when too many events
     events: [
-		{
-			title: '3pm',
-			start: '2021-06-28',
-		},
-		{
-			title: '11am',
-			start: '2021-06-30',
-		},
-		{
-			title: '5pm',
-			start: '2021-06-18',
-		},
+	
+		<% bookingMade.forEach(element => { %>
+			<%- "{ title:'" + element.timeslot + "', start: '"  + element.formatted_date + "'}," %>
+		<% }) %>
 
 	]
 

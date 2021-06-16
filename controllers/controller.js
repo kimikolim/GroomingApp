@@ -19,14 +19,18 @@ module.exports = {
 		res.render("contactForm");
 	},
 
+	dashboard: (req, res) => {
+		res.render("dashboard");
+	},
+	
 	fullCalender: async (req, res) => {
 		try {
-			let bookingMade = await BookingModel.find({}, {date: 1, timeslot: 1})
-			// bookingMade.forEach(obj => {
-			// 	let calendarDate = moment(obj.date).format("YYYY-MM-DD")
-			// 	return calendarDate
-			// });
-			// console.log(calendarDate)
+			let bookingMade = await BookingModel.find()
+			bookingMade = bookingMade.map(obj => {
+				obj.formatted_date = moment(obj.date).format("YYYY-MM-DD")
+				return obj
+			});
+			// console.log(bookingMade)
 			res.render("calender", {bookingMade: bookingMade})
 		}
 		catch (err) {
@@ -35,9 +39,6 @@ module.exports = {
 		}
 	},
 
-	dashboard: (req, res) => {
-		res.render("dashboard");
-	},
 
 	showContactQueries: (req, res) => {
 		ContactModel.find()

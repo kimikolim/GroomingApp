@@ -1,8 +1,36 @@
 <%- include('./partials/head.ejs') %>
 
 
+<section>
 
-<a href="/appointment" class="btn btn-primary" type="button">Book Appointment</a>
+    <img src="./img/pinkfur_bg.jpg" class="bg">
+    <img src="./img/dog_brown.png" class="dog">
+    <div class="content">
+        <h2>It's time for<br><span>Grooming</span></h2>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugit sed repudiandae aliquid quasi, quaerat sint, reprehenderit nulla error autem suscipit adipisci quae corporis quibusdam exercitationem asperiores magni maiores mollitia. Dolorem?</p>
+        <a href="/appointment">Book Here</a>
+    </div>
+    <ul class="sci">
+        <li><a href="#"><i class="fab fa-facebook-square fa-lg"></i></a></li>
+        <li><a href="#"><i class="fab fa-instagram fa-lg"></i></a></li>
+        <li><a href="#"><i class="fab fa-whatsapp fa-lg"></i></a></li>
+    </ul>
+</section>
+
+
+<script>
+    document.addEventListener("mousemove", (event) => {
+        const bg = document.querySelector('.bg');
+        const dog = document.querySelector('.dog');
+        const content = document.querySelector('.content');
+
+        bg.style.width = 100 + event.pageX/100 + '%';
+        bg.style.height = 100 + event.pageX/100 + '%';
+        dog.style.right = event.pageX/2 + 'px';
+        content.style.left = event.pageX/2 + 'px';
+    })
+</script>
+
 
 
 
