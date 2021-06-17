@@ -33,6 +33,13 @@ moment | Parse, validate, manipulate, and display dates
 fullcalendar | A full-sized event calendar with easily consumable combination of standard plugins
 express-validator | a set of express.js middlewares that wraps validator.js validator and sanitizer functions
 
+## Future Improvements
+1. Dynamic forms
+1. Approve/Reject Statuses
+1. Filters
+1. Administrative rights
+1. Validations
+1. Calendar Bookings
 
 ## Warning
 This application is a work in progress and the early stages of development.
