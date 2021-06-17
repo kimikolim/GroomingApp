@@ -3,9 +3,9 @@
 <div class="container-fluid mt-3">
 	<h1 class="title text-center">Booking Request</h1>
 
-	<form class="row g-3" style="max-width: 50rem; margin: auto" method="POST" action="/appointment">
+	<form class="row"  method="POST" action="/appointment">
 		<!-- Customer details -->
-
+	<div class="row g-3 bookform" style="max-width: 50rem; margin: auto">
 		<div class="col-12 mb-2">
 			<label for="name" class="form-label">Name</label>
 			<input
@@ -120,7 +120,7 @@
 		<div class="col-12 mb-5">
 			<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Submit Request</button>
 		</div>
-
+	</div>
 		<!-- Modal -->
 		<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 			<div class="modal-dialog modal-dialog-centered">

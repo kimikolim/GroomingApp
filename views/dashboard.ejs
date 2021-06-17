@@ -1,25 +1,30 @@
 <%- include('./partials/head.ejs') %>
+<section>
+	<img src="../img/tiantian.jpg" class="bg2">
 
-<div class="mainblock">
-    <div class="container-fluid mt-3">
-        <!-- Login Header -->
-
-        <h1 class="title text-center"><i class="fas fa-cut"></i> Staff Dashboard <i class="fas fa-cut fa-rotate-180"></i></h1>
-
+    <div class="mainblock">
+        <div class="container-fluid">
+            <!-- Login Header -->
+            <h1 class="title text-center display-3"><i class="fas fa-cut"></i> Staff Dashboard <i class="fas fa-cut fa-rotate-180"></i></h1>
 
 
-        <div class="row justify-content-around" style="margin-top: 10rem;">
-            <div class="col-4">
-                <a href="/admin/dashboard/contact-queries" style="text-decoration: none; text-align: center; color: #10559a;"><i class="fas fa-question-circle fa-6x"> Queries</i></a>
+
+            <div class="row justify-content-around" style="margin-top: 10rem;">
+
+                <div class="col-4 dashboard_item">
+                    <a href="/admin/dashboard/contact-queries" style="text-decoration: none; text-align: center; color: #10559a;"><i class="dashboard_item fas fa-question-circle fa-5x"> Queries</i></a>
+                </div>
+
+                <div class="col-4 dashboard_item">
+                    <a href="/admin/dashboard/booking-requests" style="text-decoration: none; text-align: center; color: #10559a;"><i class="dashboard_item fas fa-calendar-plus fa-5x"> Bookings</i></a>
+                </div>
+
             </div>
 
-            <div class="col-4">
-                <a href="/admin/dashboard/booking-requests" style="text-decoration: none; text-align: center; color: #10559a;"><i class="fas fa-calendar-plus fa-6x"> Bookings</i></a>
-            </div>
         </div>
-
     </div>
-</div>
+
+</section>
 
 
 <%- include('./partials/foot.ejs') %>

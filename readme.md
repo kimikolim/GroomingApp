@@ -31,7 +31,8 @@ ejs | Embedded javaScript templates
 method-override | Override HTTP verbs such as `PATCH` or `DELETE`
 moment | Parse, validate, manipulate, and display dates
 fullcalendar | A full-sized event calendar with easily consumable combination of standard plugins
+express-validator | a set of express.js middlewares that wraps validator.js validator and sanitizer functions
 
 
 ## Warning
-This application is in the early development stages.
+This application is a work in progress and the early stages of development.

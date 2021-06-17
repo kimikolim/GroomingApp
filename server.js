@@ -9,7 +9,7 @@ const method_override = require('method-override')
 const groomController = require('./controllers/controller')
 const mongoose = require('mongoose');
 const moment = require("moment");
-
+const { check, validationResult } = require('express-validator');
 
 
 
@@ -37,7 +37,11 @@ app.post('/appointment', groomController.bookingFormSubmit)
 
 app.get('/contact', groomController.contactForm)
 
-app.post('/contact', groomController.contactFormSubmit)
+app.post('/contact',[
+  check('name', 'Name must be 2+ characters long').isLength({min:2}),
+  check('comments', 'Let us help you! Please insert comment.').isLength({min:2}),
+  check('email', 'Email is not valid.').isEmail().normalizeEmail()
+], groomController.contactFormSubmit)
 
 app.get('/admin', groomController.admin)
 

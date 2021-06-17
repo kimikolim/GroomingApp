@@ -1,6 +1,7 @@
 const moment = require("moment");
 const { ContactModel } = require("../models/query_schema");
 const { BookingModel } = require("../models/booking_schema");
+const { validationResult } = require('express-validator');
 
 module.exports = {
 	index: (req, res) => {
@@ -22,7 +23,7 @@ module.exports = {
 	dashboard: (req, res) => {
 		res.render("dashboard");
 	},
-	
+
 	fullCalender: async (req, res) => {
 		try {
 			let bookingMade = await BookingModel.find()
@@ -62,7 +63,21 @@ module.exports = {
 
 	//Contact Form POST request
 	contactFormSubmit: (req, res) => {
-		//need to validate entries
+		//validate entries
+
+		const errors = validationResult(req)
+		if (!errors.isEmpty()) {
+			// console.log(errors.array());
+			// return res.status(400).json({errors : errors.array()});
+			res.status(400).render('contactForm', {errors : errors.array()})
+			return
+		}
+
+		const { name, email, mobile, comments } = req.body
+		// if (!name.trim() || !email.trim() || !mobile.trim() || !comments.trim()) {
+		// 	res.redirect('/contact')
+		// 	return
+		// }
 
 		ContactModel.create({
 			name: req.body.name,
@@ -85,7 +100,11 @@ module.exports = {
 	//Appointment Booking POST request
 	bookingFormSubmit: (req, res) => {
 		//need to validate entries
-
+		// console.log(req.body);
+		// if (!req.body){
+		// 	res.send('fills empty')
+		// 	return
+		// }
 		BookingModel.create({
 			name: req.body.name,
 			email: req.body.email,

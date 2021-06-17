@@ -1,9 +1,10 @@
 <%- include('./partials/head.ejs') %>
 
 
-<div class="container mainblock">
-	<div id="calendar"></div>
-</div>
+  <div class="container calendar">
+    <div id="calendar"></div>
+  </div>
+
 
 
 
@@ -21,10 +22,11 @@ document.addEventListener('DOMContentLoaded', function() {
     },
     dayMaxEvents: true, // allow "more" link when too many events
     events: [
-	
+
 		<% bookingMade.forEach(element => { %>
-			<%- "{ title:'" + element.timeslot + "', start: '"  + element.formatted_date + "'}," %>
+			<%- "{ title:'Appt: " + element.timeslot + " requested', start: '"  + element.formatted_date + "'}," %>
 		<% }) %>
+
 
 	]
 

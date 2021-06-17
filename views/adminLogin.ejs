@@ -1,5 +1,6 @@
 <%- include('./partials/head.ejs') %>
-
+<section>
+	<img src="./img/pinkfur_bg.jpg" class="bg">
 <div class="mainblock">
 	<div class="container-fluid mt-5">
 		<!-- Login Header -->
@@ -41,5 +42,16 @@
 		</form>
 	</div>
 </div>
+</section>
+
+<script>
+    document.addEventListener("mousemove", (event) => {
+        const bg = document.querySelector('.bg');
+
+        bg.style.width = 100 + event.pageX/100 + '%';
+        bg.style.height = 100 + event.pageX/100 + '%';
+
+    })
+</script>
 
 <%- include('./partials/foot.ejs') %>

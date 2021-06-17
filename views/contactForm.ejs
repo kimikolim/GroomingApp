@@ -1,22 +1,34 @@
 <%- include('./partials/head.ejs') %>
+<section>
+	<img src="./img/pinkfur_bg.jpg" class="bg">
 <div class="mainblock">
 	<div class="container-fluid mt-3">
 	<h1 class="title text-center">Have Questions?</h1>
 	<h4 class="title text-center">We're here to help.</h4>
 
-	<form class="row g-3" style="max-width: 50rem; margin: auto" method="POST" action="/contact">
+		<div class="container">
+			<% if(typeof errors != 'undefined') { %>
+			<% errors.forEach(err => { %>
+				<div class="alert alert-warning" role="alert"><%= err.msg %></div>
+			<% }) %>
+			<% } %>
+		</div>
+
+	<form class="row g-3 needs-validation" style="max-width: 50rem; margin: auto" method="POST" action="/contact" novalidate>
 		<!-- Customer details -->
 
 		<div class="col-12 mb-2">
-			<label for="name" class="form-label">Name</label>
+			<label for="validateName" class="form-label">Name</label>
 			<input
 				type="text"
+				id="validateName"
 				class="form-control"
 				name="name"
 				placeholder="Enter Your Name"
                 maxlength="50"
 
 			/>
+			<div class="valid-feedback">All good!</div>
 		</div>
 
 		<div class="col-md-6 mb-2">
@@ -57,7 +69,7 @@
 			<div class="modal-dialog modal-dialog-centered">
 			<div class="modal-content">
 				<div class="modal-header">
-				<h5 class="modal-title text-warning fs-2" id="staticBackdropLabel">Submitted Successfully!</h5>
+				<h5 class="modal-title text-warning fs-2" id="staticBackdropLabel">Infomation</h5>
 				<!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
 				</div>
 				<div class="modal-body">
@@ -72,6 +84,17 @@
 	</form>
 </div>
 </div>
+</section>
+
+<script>
+    document.addEventListener("mousemove", (event) => {
+        const bg = document.querySelector('.bg');
+
+        bg.style.width = 100 + event.pageX/100 + '%';
+        bg.style.height = 100 + event.pageX/100 + '%';
+
+    })
+</script>
 
 
 <%- include('./partials/foot.ejs') %>
